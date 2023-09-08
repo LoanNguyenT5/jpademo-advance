@@ -17,4 +17,6 @@ public interface BookRepository extends CrudRepository<BookEntity, Integer> {
 
     @Query(value = "Select * from BookEntity b where b.price > ?1", nativeQuery = true)
     List<BookEntity> getBookPriceMore(double price);
+
+   // BookEntity findOne(int i);
 }

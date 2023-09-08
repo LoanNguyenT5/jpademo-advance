@@ -10,9 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface AccountRepository extends CrudRepository<AccountEntity, Integer> {
-    @Query(value = "",nativeQuery = true)
-    void updateAccLook();
 
-    @Query("delete account u where u.balance = 0")
-    void deleteAccByBalanc();
+
 }

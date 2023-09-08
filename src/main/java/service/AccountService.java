@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import repository.AccountRepository;
 
-@Service
+@Service("accountService")
 public class AccountService {
     @Autowired
     AccountRepository accountRepository;
@@ -21,8 +21,8 @@ public class AccountService {
         this.transactionManager = transactionManager;
     }
     public AccountService(){
-    }
 
+    }
 
     public void transferMoney(int sourceAccountId, int targetAccountId, double amount){
         TransactionDefinition definition = new DefaultTransactionDefinition();
@@ -54,8 +54,8 @@ public class AccountService {
         }
     }
 
-    @Transactional(rollbackFor = Exception.class, noRollbackFor = NullPointerException.class)
-   // @Transactional
+    //@Transactional(rollbackFor = Exception.class, noRollbackFor = NullPointerException.class)
+    @Transactional(rollbackFor = Exception.class)
     public void transferMoneyUsingAnnotion(int sourceAccountId, int targetAccountId, double amount) throws Exception {
         AccountEntity sourceAcc = accountRepository.findById(sourceAccountId).get();
         AccountEntity targetAcc = accountRepository.findById(targetAccountId).get();
@@ -74,15 +74,4 @@ public class AccountService {
         // save to DB
         accountRepository.save(targetAcc);
     }
-    //@Transactional(noRollbackFor = NullPointerException.class)
-    public void updateAccLook(){
-        //balaal
-        accountRepository.updateAccLook();
-    }
-   // @Transactional(rollbackFor = NullPointerException.class)
-    public void deleteAccLook(){
-        //balaal
-        accountRepository.deleteAccByBalanc();
-    }
-
 }
