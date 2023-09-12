@@ -18,6 +18,7 @@ public class AccountService {
 
     // Dependency injection via constructor
     public AccountService(JpaTransactionManager transactionManager){
+
         this.transactionManager = transactionManager;
     }
     public AccountService(){
@@ -25,7 +26,7 @@ public class AccountService {
     }
 
     public void transferMoney(int sourceAccountId, int targetAccountId, double amount){
-        TransactionDefinition definition = new DefaultTransactionDefinition();
+        DefaultTransactionDefinition definition = new DefaultTransactionDefinition();
         TransactionStatus status = transactionManager.getTransaction(definition);
         try {
             AccountEntity sourceAcc = accountRepository.findById(sourceAccountId).get();

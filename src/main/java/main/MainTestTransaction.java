@@ -16,13 +16,12 @@ public class MainTestTransaction {
     static AccountService accountService = applicationContext.getBean("accountService", AccountService.class);
     public static void main(String[] args) throws Exception {
         // Create new account
-       //  createNewAccount();
+         createNewAccount();
         // Transfer money with platform transaction management
-       accountService.transferMoney(1,2,50);
+        //accountService.transferMoney(1,2,50);
+        accountService.transferMoney(1,2,60);
         // Transfer money using annotion
        //  accountService.transferMoneyUsingAnnotion(1,2,60);
-
-
     }
     //
     public static void createNewAccount(){
