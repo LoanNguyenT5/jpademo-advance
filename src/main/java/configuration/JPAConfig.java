@@ -30,7 +30,8 @@ public class JPAConfig {
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3307/jpa?characterEncoding=UTF-8");
+        // Sử dụng createDatabaseIfNotExist=true để tự động tạo cơ sở dữ liệu nếu chưa tồn tại
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3307/jpa2?characterEncoding=UTF-8&createDatabaseIfNotExist=true");
         dataSource.setUsername("root");
         dataSource.setPassword("admin");
         return dataSource;
