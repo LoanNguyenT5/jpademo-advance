@@ -31,9 +31,9 @@ public class JPAConfig {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         // Sử dụng createDatabaseIfNotExist=true để tự động tạo cơ sở dữ liệu nếu chưa tồn tại
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3307/jpa2?characterEncoding=UTF-8&createDatabaseIfNotExist=true");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3308/jpa2?characterEncoding=UTF-8&createDatabaseIfNotExist=true");
         dataSource.setUsername("root");
-        dataSource.setPassword("");//admin
+        dataSource.setPassword("123");//admin
         return dataSource;
     }
 
@@ -50,7 +50,7 @@ public class JPAConfig {
 
     final Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");//update
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");//create
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         hibernateProperties.setProperty("hibernate.format_sql", "true");
